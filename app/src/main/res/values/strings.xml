@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SeeDubrovnik</string>
+    <string name="getDescription">Get Description</string>
+    <string name="getLocation">Get Location</string>
+</resources>
