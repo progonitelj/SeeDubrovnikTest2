@@ -48,7 +48,7 @@ public class RecyclerViewListAdapterTur extends RecyclerView.Adapter<RecyclerVie
             @Override
             public void onClick(View v) {
                 Toast.makeText(myContext, "Clicked " + object.getName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(myContext, MidActivity.class);
+                Intent intent = new Intent(myContext, Bottom_Activity.class);
                 intent.putExtra("stringName", object.getName());
                 intent.putExtra("geo", object.getGeoURI());
                 intent.putExtra("img", object.getImage());

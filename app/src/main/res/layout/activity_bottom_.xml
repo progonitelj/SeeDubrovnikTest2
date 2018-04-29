@@ -4,28 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
     tools:context=".Bottom_Activity">
 
 
-    <ImageView
-        android:id="@+id/endimage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/bg_dubrovnik"
-        />
+        <ImageView
+            android:id="@+id/endimage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/bg_dubrovnik"
+            android:layout_marginBottom="10dp"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/endimage"
+            android:layout_above="@+id/location"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/textime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Hello World!!!"
+                    android:layout_weight="50"
+                    android:textSize="35sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/pot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textime"
+                    android:layout_alignParentLeft="true"
+                    android:text="Hello World!!!"
+                    android:layout_weight="50"
+                    android:textSize="22sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+
+                    />
+
+
+
+
+            <TextView
+                android:id="@+id/descript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pot"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+
+    <Button
+        android:id="@+id/location"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/endimage"
-        android:layout_alignParentLeft="true"
-        android:background="@color/colorPrimaryDark"
-        android:text="Hello World!!!"
-        android:textColor="@color/pureWight"
-        android:textSize="30sp" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightBlue"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:text="Get Location Now"
+        />
 
 
 
