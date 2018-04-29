@@ -72,11 +72,11 @@
     android:layout_height="match_parent"
     app:menu="@menu/navigation_menu"
     android:layout_gravity="start">
-    <!--//add this to every layout containing navigation -->
+
 
 
 </android.support.design.widget.NavigationView>
-
+    <!--//add this to every layout containing navigation -->
 </android.support.v4.widget.DrawerLayout>
     <!--//close it -->
 
