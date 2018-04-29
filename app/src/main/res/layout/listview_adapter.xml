@@ -15,7 +15,7 @@
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         card_view:cardCornerRadius="5dp"
         android:elevation="15dp"
         card_view:contentPaddingLeft="5dp"
@@ -50,7 +50,7 @@
                 android:id="@+id/TextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text = "Part of town: Dubrovnik old town."
+                android:text = "Description: "
                 android:textSize="15sp"
                 />
 

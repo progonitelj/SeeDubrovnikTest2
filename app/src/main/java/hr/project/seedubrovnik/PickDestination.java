@@ -19,7 +19,7 @@ public class PickDestination extends AppCompatActivity {
     private static final String TAG = "PickDestination";
     RecyclerView recyclerView;
     RecyclerViewListAdapter lsViewAdapter;
-    List<TuristicObject> ls;
+    List<PartsOfTown> lsPartsOfTown;
 
 
 
@@ -37,7 +37,7 @@ public class PickDestination extends AppCompatActivity {
             error.show();
         }
 
-        ls = new ArrayList<>();
+        lsPartsOfTown = new ArrayList<>();
 
         Log.d(TAG, "onCreate: TuristObjects List Created!!");
         recyclerView = (RecyclerView) findViewById(R.id.RecyclerView1);
@@ -48,62 +48,32 @@ public class PickDestination extends AppCompatActivity {
         Log.d(TAG, "onCreate: RecyclerView created!");
 
 
-        String stradunUri = "geo:0,0?q=Stradun, Croatia";
-        Uri stradunGeo = Uri.parse(stradunUri);
 
-        String svVlahoUri = "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia";
-        Uri svVlahogeo = Uri.parse(svVlahoUri);
-
-        String mincetaUri =  "geo:0,0?q=Tvrđava Minčeta,Ul. Ispod Minčete 9, 20000, Dubrovnik,g Croatia";
-        Uri mincetraGeo = Uri.parse(mincetaUri);
-
-
-        String revelinUri =  "geo:0,0?q=Culture club Revelin, Ul. Svetog Dominika 3, 20000, Dubrovnik, Croatia";
-        Uri revelinGeo = Uri.parse(revelinUri);
-
-        String svIvanUri =  "geo:0,0?q=Tvrđava Sv. Ivana, 20000, Dubrovnik, Croatia";
-        Uri svIvanGeo = Uri.parse(svIvanUri);
-
-        String bokarUri =  "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia";
-        Uri bokarGeo = Uri.parse(bokarUri);
+        PartsOfTown p1 = new PartsOfTown("Old Town", R.drawable.oldtown_icon, "The old town of Dubrovnik");
+        PartsOfTown p2 = new PartsOfTown("Lapad", R.drawable.lapad_icon, "Urban Part of Dubrovnik");
+        PartsOfTown p3 = new PartsOfTown("Gruz", R.drawable.gruz_icon, "Urban part of dubrovnik/port");
+        PartsOfTown p4 = new PartsOfTown("Kolocep", R.drawable.kolocep, "First Elafiti island");
+        PartsOfTown p5 = new PartsOfTown("Cavatat", R.drawable.cavtat_icon, "Small Town close to Dubrovnik");
+        PartsOfTown p6 = new PartsOfTown("Lokrum", R.drawable.lokrum_icon, "Small island close to Dubrovnik");
 
 
-        //TuristicObject ob1 = new TuristicObject("Zidine", "Old Town", "Wallz sorounding old town", "drawable://" + R.drawable.zidine_icon, );
-        TuristicObject ob2 = new TuristicObject("Minceta", "Old Town", "Biggest fort in Dubrovnik Old town", "Sight-seeing", R.drawable.miceta_icon, mincetraGeo);
-        TuristicObject ob3 = new TuristicObject("Revelin", "Old Town", "Fort/Night club", "Sight-seeing",  R.drawable.revelin_icon, revelinGeo);
-        TuristicObject ob4 = new TuristicObject("Sv  Ivan", "Old Town", "Fort in the old port of Dubrovnik", "Sight-seeing",   + R.drawable.svivan_icon, svIvanGeo);
-        TuristicObject ob5 = new TuristicObject("Bokar", "Old Town", "Fort close to Pile gate", "Sight-seeing",  R.drawable.bokar_icon, bokarGeo);
-        //TuristicObject ob6 = new TuristicObject("Buza", "Old Town", "A bar with beatifful view", "drawable://" + R.drawable.buza_icon);
-        TuristicObject ob7 = new TuristicObject("Stradun", "Old Town", "Main street of Dubrovnik", "Sight-seeing",   + R.drawable.stradun_ico, stradunGeo);
-        TuristicObject ob8 = new TuristicObject("Sv Vlaho", "Old Town", "Chirch of Dubrovnik protector", "Sight-seeing",  R.drawable.sv_vlaho_icon, svVlahogeo);
-        //TuristicObject ob9 = new TuristicObject("Katedrala", "Old Town", "Main chirch of Dubrovnik", "drawable://" + R.drawable.sv_vlaho_icon);
-        //TuristicObject ob10 = new TuristicObject("Knezev dvor", "Old Town", "House od Dubrovnik landlords", "drawable://" + R.drawable.knezevdvor_icon);
-        //TuristicObject ob11 = new TuristicObject("Palaca Sponza", "Old Town", "Something", "drawable://" + R.drawable.sponza_icon);
-        //TuristicObject ob12 = new TuristicObject("Porporela", "Old Town", "Old port of Dubrovnik", "drawable://" + R.drawable.svivan_icon);
-        //TuristicObject ob13 = new TuristicObject("Lokrum", "Old Town", "Island near by Dubrovnik", "drawable://" + R.drawable.lokrum_icon);
-        //TuristicObject ob14 = new TuristicObject("Pile", "Pile", "West Entrance to old Town", "drawable://" + R.drawable.bokar_icon);
-        //TuristicObject ob15 = new TuristicObject("Kolocep", "Elafiti", "First of elafiti collection of islands", "drawable://" + R.drawable.kolocep);
+        lsPartsOfTown.add(p1);
+        lsPartsOfTown.add(p2);
+        lsPartsOfTown.add(p3);
+        lsPartsOfTown.add(p4);
+        lsPartsOfTown.add(p5);
+        lsPartsOfTown.add(p6);
 
 
 
 
-        //ls.add(ob1);
-        ls.add(ob2);
-        ls.add(ob3);
-        ls.add(ob4);
-        ls.add(ob5);
-        //ls.add(ob6);
-        ls.add(ob7);
-        ls.add(ob8);
-        //ls.add(ob9);
-        //ls.add(ob10);
-        //ls.add(ob11);
-        //ls.add(ob12);
-        //ls.add(ob13);
-        //ls.add(ob14);
-        //ls.add(ob15);
 
-        lsViewAdapter = new RecyclerViewListAdapter(this, ls);
+
+
+
+
+
+        lsViewAdapter = new RecyclerViewListAdapter(this, lsPartsOfTown);
         recyclerView.setAdapter(lsViewAdapter);
 
     }
