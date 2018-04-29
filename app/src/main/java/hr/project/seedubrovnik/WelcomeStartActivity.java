@@ -8,6 +8,7 @@ import android.widget.Button;
 
 
 //hello world
+//back to old
 
 public class WelcomeStartActivity extends AppCompatActivity {
 

@@ -7,18 +7,13 @@
     tools:context=".PickDestination">
 
 
-    <EditText
-        android:id="@+id/search_bar"
+    <view class="android.support.v7.widget.RecyclerView"
+        android:id="@+id/RecyclerView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_height="wrap_content">
+
+    </view>
 
 
-    <ListView
-        android:id="@+id/theList"
-        android:layout_below="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_alignParentBottom="true"
-        android:scrollbars="vertical" />
+
 </RelativeLayout>

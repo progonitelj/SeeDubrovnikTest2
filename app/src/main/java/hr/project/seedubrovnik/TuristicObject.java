@@ -7,21 +7,21 @@ import java.util.List;
 
 public class TuristicObject {
 
-    TuristicObject(String name, String PartOfTown, String description, String typeOfObject, String imageURL, Uri geoURI){
+    TuristicObject(String name, String PartOfTown, String description, String typeOfObject, int image, Uri geoURI){
         this.setName(name);
         this.setPartOfTown(PartOfTown);
         this.setDescription(description);
-        this.setImageURL(imageURL);
+        this.setImageURL(image);
         this.setGeoURI(geoURI);
         this.setTypeOfObject(typeOfObject);
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public int getImage() {
+        return image;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageURL(int image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -79,7 +79,7 @@ public class TuristicObject {
     private String partOfTown;
     private String description;
     private String typeOfObject;
-    private String imageURL;
+    private int image;
     private Uri geoURI;
 
 }

@@ -26,7 +26,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLEOBJECTS + "("
-        + ATRIBUTEID + "INT PRIMARY KEY AUTOINCREMENT,"
+        + ATRIBUTEID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
         + ATRIBUTENAME + "TEXT NOT NULL UNIQUE,"
         + ATRIBUTEDESC + "TEXT NOT NULL,"
         + ATRIBUTEPOT + "TEXT NOT NULL,"
