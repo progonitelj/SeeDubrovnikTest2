@@ -2,10 +2,7 @@
     <string name="app_name">SeeDubrovnik</string>
     <string name="getDescription">Get Description</string>
     <string name="getLocation">Get Location</string>
-<<<<<<< HEAD
     <string name="title_activity_details">DetailsActivity</string>
-=======
     <string name="open">Open</string>
     <string name="close">Close</string>
->>>>>>> origin/master
 </resources>
