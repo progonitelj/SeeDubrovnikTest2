@@ -2,8 +2,6 @@ package hr.project.seedubrovnik;
 
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -40,12 +38,13 @@ public class PickDestination extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         try {
             helper = new SeeDubrovnikDatabaseHellper(this);
-            Log.d(TAG, "onCreate: database connexted!");
+            Log.d(TAG, "onCreate: database connected!");
             makeToastShort("Connected to database!");
             Cursor locationsCursor = helper.getLocations();
-
+            Log.d(TAG, "onCreate:got locations!!");
             while (locationsCursor.moveToNext()){
                 PartsOfTown el= new PartsOfTown(locationsCursor.getString(1), locationsCursor.getInt(4), locationsCursor.getString(3));
                 lsPartsOfTown.add(el);

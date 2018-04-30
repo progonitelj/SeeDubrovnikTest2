@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 
 class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
@@ -27,7 +25,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     private static final int DBVERSION = 1;
 
 
-    public SeeDubrovnikDatabaseHellper(Context context) {
+    SeeDubrovnikDatabaseHellper(Context context) {
         super(context, DBNAME, null, DBVERSION);
     }
 
@@ -61,6 +59,9 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
             + ATRIBUTEGEO + " TEXT UNIQUE);");
 
 
+        Log.d(TAG, "onCreate:Tables created");
+
+
         //populate table locations
         insertNewLocation(db,"Old Town", "Aread of Dubrovnik", "The old town of Dubrovnik", R.drawable.oldtown_icon);
         insertNewLocation(db,"Lapad", "Aread of Dubrovnik","Urban Part of Dubrovnik", R.drawable.lapad_icon);
@@ -71,6 +72,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
 
         cursor = getLocation_id(db, "Old Town");
+        cursor.moveToNext();
         id = cursor.getInt(0);
         insertNewObject(db, "Minceta", id, "One of the 5 forts in Old town of Dubrovnik. From 5 forts Minceta is the biggest.", "Fort", R.drawable.miceta_icon, "geo:0,0?q=Tvrđava Minčeta,Ul. Ispod Minčete 9, 20000, Dubrovnik,g Croatia");
         insertNewObject(db, "Revelin", id, "One of the 5 forts in Old town of Dubrovnik located on the easr entrance to the Old town Ploce gate. Also it is Night club.", "Fort/Night club", R.drawable.revelin_icon, "geo:0,0?q=Culture club Revelin, Ul. Svetog Dominika 3, 20000, Dubrovnik, Croatia");
@@ -78,6 +80,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewObject(db, "Bokar", id, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
         insertNewObject(db, "Stradun", id, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
         insertNewObject(db, "Sv Vlaho", id, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
+
     }
 
     @Override
