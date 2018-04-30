@@ -34,12 +34,23 @@ public class PickDestination extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_destination);
         Log.d(TAG, "onCreate: Started!! ");
+        SeeDubrovnikDatabaseHellper helper;
+        lsPartsOfTown = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.RecyclerView1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         try {
-            SQLiteOpenHelper seeDubrovnikSQLHelper = new SeeDubrovnikDatabaseHellper(this);
-            SQLiteDatabase db = seeDubrovnikSQLHelper.getReadableDatabase();
+            helper = new SeeDubrovnikDatabaseHellper(this);
             Log.d(TAG, "onCreate: database connexted!");
             makeToastShort("Connected to database!");
+            Cursor locationsCursor = helper.getLocations();
+
+            while (locationsCursor.moveToNext()){
+                PartsOfTown el= new PartsOfTown(locationsCursor.getString(1), locationsCursor.getInt(4), locationsCursor.getString(3));
+                lsPartsOfTown.add(el);
+
+            }
         }catch (SQLException e){
             makeToastShort("Can not connect to database!");
         }
@@ -53,19 +64,10 @@ public class PickDestination extends AppCompatActivity {
         //Navbar prepare *end*
 
 
-        lsPartsOfTown = new ArrayList<>();
-
-        Log.d(TAG, "onCreate: TuristObjects List Created!!");
-        recyclerView = (RecyclerView) findViewById(R.id.RecyclerView1);
-        Log.d(TAG, "onCreate: RecyclerView binded to id!");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        Log.d(TAG, "onCreate: RecyclerView created!");
 
 
 
-        PartsOfTown p1 = new PartsOfTown("Old Town", R.drawable.oldtown_icon, "The old town of Dubrovnik");
+        /*PartsOfTown p1 = new PartsOfTown("Old Town", R.drawable.oldtown_icon, "The old town of Dubrovnik");
         PartsOfTown p2 = new PartsOfTown("Lapad", R.drawable.lapad_icon, "Urban Part of Dubrovnik");
         PartsOfTown p3 = new PartsOfTown("Gruz", R.drawable.gruz_icon, "Urban part of dubrovnik/port");
         PartsOfTown p4 = new PartsOfTown("Kolocep", R.drawable.kolocep, "First Elafiti island");
@@ -81,7 +83,7 @@ public class PickDestination extends AppCompatActivity {
         lsPartsOfTown.add(p6);
 
 
-
+*/
 
 
 
