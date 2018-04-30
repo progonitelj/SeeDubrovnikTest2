@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
     private static final String TAG = "SeeDubrovnikDatabaseHel";
@@ -30,8 +33,14 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        int id;
+        Cursor cursor;
+
+        //enable SQLite foreign keys
         db.execSQL("PRAGMA foreign_keys = ON;");
 
+
+        //create table locations
         db.execSQL("CREATE TABLE " + TABLELOCATIONS + "("
                 + ATRIBUTEID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ATRIBUTENAME + " TEXT NOT NULL UNIQUE,"
@@ -41,16 +50,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
                 + " FOREIGN KEY (" + ATRIBUTEID +") REFERENCES " + TABLEOBJECTS + "(" + ATRIBUTEID + "));" );
 
 
-
-        insertNewLocation(db,"Old Town", "Aread of Dubrovnik", "The old town of Dubrovnik", R.drawable.oldtown_icon);
-        insertNewLocation(db,"Lapad", "Aread of Dubrovnik","Urban Part of Dubrovnik", R.drawable.lapad_icon);
-        insertNewLocation(db,"Gruz", "Aread of Dubrovnik","Urban part of dubrovnik/port", R.drawable.gruz_icon);
-        insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
-        insertNewLocation(db,"Cavatat", "Town","Small Town close to Dubrovnik", R.drawable.cavtat_icon);
-        insertNewLocation(db,"Lokrum", "Island","Small island close to Dubrovnik", R.drawable.lokrum_icon);
-
-
-
+        // create table objects
         db.execSQL("CREATE TABLE " + TABLEOBJECTS + "("
             + ATRIBUTEID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ATRIBUTENAME + " TEXT NOT NULL UNIQUE,"
@@ -60,12 +60,24 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
             + ATRIBUTEIMG + " INT NOT NULL,"
             + ATRIBUTEGEO + " TEXT UNIQUE);");
 
-        insertNewObject(db, "Minceta", 1, "One of the 5 forts in Old town of Dubrovnik. From 5 forts Minceta is the biggest.", "Fort", R.drawable.miceta_icon, "geo:0,0?q=Tvrđava Minčeta,Ul. Ispod Minčete 9, 20000, Dubrovnik,g Croatia");
-        insertNewObject(db, "Revelin", 2, "One of the 5 forts in Old town of Dubrovnik located on the easr entrance to the Old town Ploce gate. Also it is Night club.", "Fort/Night club", R.drawable.revelin_icon, "geo:0,0?q=Culture club Revelin, Ul. Svetog Dominika 3, 20000, Dubrovnik, Croatia");
-        insertNewObject(db, "Sv Ivan", 3, "One of the 5 forts in Old town of Dubrovnik. Also Sv Ivan has a museum and aquarium inside of it.", "Fort/Museum", R.drawable.svivan_icon, "geo:0,0?q=Tvrđava Sv. Ivana, 20000, Dubrovnik, Croatia");
-        insertNewObject(db, "Bokar", 4, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
-        insertNewObject(db, "Stradun", 5, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
-        insertNewObject(db, "Sv Vlaho", 6, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
+
+        //populate table locations
+        insertNewLocation(db,"Old Town", "Aread of Dubrovnik", "The old town of Dubrovnik", R.drawable.oldtown_icon);
+        insertNewLocation(db,"Lapad", "Aread of Dubrovnik","Urban Part of Dubrovnik", R.drawable.lapad_icon);
+        insertNewLocation(db,"Gruz", "Aread of Dubrovnik","Urban part of dubrovnik/port", R.drawable.gruz_icon);
+        insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
+        insertNewLocation(db,"Cavatat", "Town","Small Town close to Dubrovnik", R.drawable.cavtat_icon);
+        insertNewLocation(db,"Lokrum", "Island","Small island close to Dubrovnik", R.drawable.lokrum_icon);
+
+
+        cursor = getLocation_id(db, "Old Town");
+        id = cursor.getInt(0);
+        insertNewObject(db, "Minceta", id, "One of the 5 forts in Old town of Dubrovnik. From 5 forts Minceta is the biggest.", "Fort", R.drawable.miceta_icon, "geo:0,0?q=Tvrđava Minčeta,Ul. Ispod Minčete 9, 20000, Dubrovnik,g Croatia");
+        insertNewObject(db, "Revelin", id, "One of the 5 forts in Old town of Dubrovnik located on the easr entrance to the Old town Ploce gate. Also it is Night club.", "Fort/Night club", R.drawable.revelin_icon, "geo:0,0?q=Culture club Revelin, Ul. Svetog Dominika 3, 20000, Dubrovnik, Croatia");
+        insertNewObject(db, "Sv Ivan", id, "One of the 5 forts in Old town of Dubrovnik. Also Sv Ivan has a museum and aquarium inside of it.", "Fort/Museum", R.drawable.svivan_icon, "geo:0,0?q=Tvrđava Sv. Ivana, 20000, Dubrovnik, Croatia");
+        insertNewObject(db, "Bokar", id, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
+        insertNewObject(db, "Stradun", id, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
+        insertNewObject(db, "Sv Vlaho", id, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
     }
 
     @Override
@@ -76,6 +88,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
     }
 
+    //insert new location into table locations
     public void insertNewLocation(SQLiteDatabase db, String name, String type, String description, int img){
         ContentValues objectValues = new ContentValues();
         objectValues.put(ATRIBUTENAME, name);
@@ -87,6 +100,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     }
 
 
+    //insert new object into table objects
     public void insertNewObject (SQLiteDatabase db, String name, int lication_id, String description, String typeOfObject, int image, String geoData){
         ContentValues objectValues = new ContentValues();
         objectValues.put(ATRIBUTENAME, name);
@@ -98,19 +112,24 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         db.insert(TABLEOBJECTS, null, objectValues);
     }
 
+    //gets all location id-s where names is 'name'
+    public Cursor getLocation_id(SQLiteDatabase db, String name){
+        Cursor cur = db.rawQuery("SELECT " + ATRIBUTEID + " FROM " + TABLELOCATIONS + " WHERE " + ATRIBUTENAME + " = '" + name + "' ;", null);
+        return cur;
+    }
 
-    //private Cursor getLocation_id()
 
-
-    public Cursor gettAllObjects (){
-        SQLiteDatabase db = this.getReadableDatabase();
+    public Cursor getObjects (){
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLEOBJECTS + " ;", null);
         return cursor;
     }
 
-    public Cursor gettAllLocations (){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLELOCATIONS + " ;", null);
+
+    public Cursor getLocations (){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM " + TABLELOCATIONS + " ;";
+        Cursor cursor = db.rawQuery(sql, null);
         return cursor;
     }
 }
