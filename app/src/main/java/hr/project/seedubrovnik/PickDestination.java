@@ -38,9 +38,10 @@ public class PickDestination extends AppCompatActivity {
         try {
             SQLiteOpenHelper seeDubrovnikSQLHelper = new SeeDubrovnikDatabaseHellper(this);
             SQLiteDatabase db = seeDubrovnikSQLHelper.getReadableDatabase();
+            Log.d(TAG, "onCreate: database connexted!");
+            makeToastShort("Connected to database!");
         }catch (SQLException e){
-            Toast error = Toast.makeText(this, "DATABASE OPENING FAILED!!!", Toast.LENGTH_SHORT);
-            error.show();
+            makeToastShort("Can not connect to database!");
         }
 
         //Navbar prepare *start*
@@ -101,4 +102,13 @@ public class PickDestination extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     //Navbar hamburger icon function *start*
+
+
+    public void makeToastLong(String text){
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    }
+
+    public void makeToastShort(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
 }

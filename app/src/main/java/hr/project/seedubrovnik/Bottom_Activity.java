@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Bottom_Activity extends AppCompatActivity {
 
@@ -31,4 +32,17 @@ public class Bottom_Activity extends AppCompatActivity {
         ImageView ivImage = (ImageView) findViewById(R.id.endimage);
         ivImage.setImageResource(image);
     }
+
+
+
+
+    public void makeToastLong(String text){
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    }
+
+    public void makeToastShort(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

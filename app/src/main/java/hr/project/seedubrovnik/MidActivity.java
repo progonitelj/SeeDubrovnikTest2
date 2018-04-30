@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,4 +125,16 @@ lsMonuments.setAdapter(lsMonumentsAdapter);
         return super.onOptionsItemSelected(item);
     }
     //Navbar hamburger icon function *start*
+
+
+    public void makeToastLong(String text){
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    }
+
+    public void makeToastShort(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
 }
+
+
+
