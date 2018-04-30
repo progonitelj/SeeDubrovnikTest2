@@ -54,6 +54,10 @@ public class PickDestination extends AppCompatActivity {
             makeToastShort("Can not connect to database!");
         }
 
+
+        lsViewAdapter = new RecyclerViewListAdapter(this, lsPartsOfTown);
+        recyclerView.setAdapter(lsViewAdapter);
+
         //Navbar prepare *start*
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
@@ -62,36 +66,6 @@ public class PickDestination extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Navbar prepare *end*
 
-
-
-
-
-        /*PartsOfTown p1 = new PartsOfTown("Old Town", R.drawable.oldtown_icon, "The old town of Dubrovnik");
-        PartsOfTown p2 = new PartsOfTown("Lapad", R.drawable.lapad_icon, "Urban Part of Dubrovnik");
-        PartsOfTown p3 = new PartsOfTown("Gruz", R.drawable.gruz_icon, "Urban part of dubrovnik/port");
-        PartsOfTown p4 = new PartsOfTown("Kolocep", R.drawable.kolocep, "First Elafiti island");
-        PartsOfTown p5 = new PartsOfTown("Cavatat", R.drawable.cavtat_icon, "Small Town close to Dubrovnik");
-        PartsOfTown p6 = new PartsOfTown("Lokrum", R.drawable.lokrum_icon, "Small island close to Dubrovnik");
-
-
-        lsPartsOfTown.add(p1);
-        lsPartsOfTown.add(p2);
-        lsPartsOfTown.add(p3);
-        lsPartsOfTown.add(p4);
-        lsPartsOfTown.add(p5);
-        lsPartsOfTown.add(p6);
-
-
-*/
-
-
-
-
-
-
-
-        lsViewAdapter = new RecyclerViewListAdapter(this, lsPartsOfTown);
-        recyclerView.setAdapter(lsViewAdapter);
 
     }
     //Navbar hamburger icon function *start*

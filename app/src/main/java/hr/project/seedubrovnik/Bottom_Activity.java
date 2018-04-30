@@ -1,11 +1,14 @@
 package hr.project.seedubrovnik;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,12 +17,27 @@ public class Bottom_Activity extends AppCompatActivity {
     //Navbar include *start*
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    Uri geoUri;
     //Navbar include *end*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_);
         Intent intent = getIntent();
+
+
+        String geo = intent.getStringExtra("geo");
+        geoUri = Uri.parse(geo);
+        Button bLocation = (Button) findViewById(R.id.location);
+        bLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeToastShort("Button get location clicked!");
+                Intent intent = new Intent(Intent.ACTION_VIEW, geoUri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
 
         String descript = intent.getStringExtra("desc");
         TextView tvDescript = (TextView) findViewById(R.id.descript);

@@ -40,8 +40,8 @@ public class RecyclerViewListAdapterTur extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final TuristicObject object = items.get(position);
-        holder.title.setText(object.getName());
-        holder.partOfTown.setText(object.getDescription());
+        //holder.title.setText(object.getName());
+        //holder.partOfTown.setText(object.getDescription());
         holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImage()));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +68,13 @@ public class RecyclerViewListAdapterTur extends RecyclerView.Adapter<RecyclerVie
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
-        TextView title, partOfTown;
+        //TextView title, partOfTown;
         LinearLayout parentLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.imageView1);
-            title = itemView.findViewById(R.id.TextView1);
-            partOfTown = itemView.findViewById(R.id.TextView2);
+            //title = itemView.findViewById(R.id.TextView1);
+            //partOfTown = itemView.findViewById(R.id.TextView2);
             parentLayout =  itemView.findViewById(R.id.parentLayout);
         }
     }

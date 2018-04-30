@@ -39,10 +39,9 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder: Started!!!");
         final PartsOfTown object = items.get(position);
-        holder.title.setText(object.getName());
-        holder.desc.setText(holder.desc.getText() + object.getDesc());
+        //holder.title.setText(object.getName());
+        //holder.desc.setText(holder.desc.getText() + object.getDesc());
         holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImage()));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -66,13 +65,13 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
-        TextView title, desc;
+        //TextView title, desc;
         LinearLayout parentLayout;
         public ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.imageView1);
-            title = itemView.findViewById(R.id.TextView1);
-            desc  = itemView.findViewById(R.id.TextView2);
+            //title = itemView.findViewById(R.id.TextView1);
+            //desc  = itemView.findViewById(R.id.TextView2);
             parentLayout =  itemView.findViewById(R.id.parentLayout);
         }
     }

@@ -66,7 +66,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewLocation(db,"Old Town", "Aread of Dubrovnik", "The old town of Dubrovnik", R.drawable.oldtown_icon);
         insertNewLocation(db,"Lapad", "Aread of Dubrovnik","Urban Part of Dubrovnik", R.drawable.lapad_icon);
         insertNewLocation(db,"Gruz", "Aread of Dubrovnik","Urban part of dubrovnik/port", R.drawable.gruz_icon);
-        insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
+        //insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
         insertNewLocation(db,"Cavatat", "Town","Small Town close to Dubrovnik", R.drawable.cavtat_icon);
         insertNewLocation(db,"Lokrum", "Island","Small island close to Dubrovnik", R.drawable.lokrum_icon);
 
@@ -135,4 +135,12 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sql, null);
         return cursor;
     }
+
+
+    public Cursor getObjectsOf (String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT o.Name, o.Description, o.TypeOfObject, o.Image_id, o.geoData FROM Objects o JOIN Locations l ON l.ID = o.Location_id WHERE l.Name = '" + name +"';", null);
+        return cursor;
+    }
 }
+
