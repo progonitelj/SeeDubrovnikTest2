@@ -1,5 +1,6 @@
 package hr.project.seedubrovnik;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -16,19 +17,27 @@ import android.widget.Toolbar;
 //back to old
 
 public class WelcomeStartActivity extends AppCompatActivity  {
-    //Navbar include *start*
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
-    //Navbar include *end*
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_start);
+        DrawNav();
+    }
 
-        //Navbar prepare *start*
+
+
+    //----------###############################-----NAVBAR *start* -----------###############################---------------------------------
+    public DrawerLayout mDrawerLayout;
+    public ActionBarDrawerToggle mToggle;
+
+    public void onClickStart(View view) {
+        Intent intent = new Intent(this, PickDestination.class);
+        startActivity(intent);
+    }
+
+    //Navbar DRAW *start*
+    public void DrawNav(){
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
@@ -36,6 +45,7 @@ public class WelcomeStartActivity extends AppCompatActivity  {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView navigationView = findViewById(R.id.view_nav);
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -45,13 +55,14 @@ public class WelcomeStartActivity extends AppCompatActivity  {
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
 
-
                         int id = item.getItemId();
-                        if (id == R.id.home) {
 
-                        }
                         if (id == R.id.destination) {
-                            GoDestinations();
+                            Directions.GoDestinations(getBaseContext());
+                        }
+                        if (id == R.id.restaurants) {
+                            Directions.GoRestaurant(getBaseContext());
+
                         }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
@@ -59,10 +70,10 @@ public class WelcomeStartActivity extends AppCompatActivity  {
                         return true;
                     }
                 });
-        //Navbar prepare *end*
-    }
 
-    //Navbar hamburger icon function *start*
+
+
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mToggle.onOptionsItemSelected(item)) {
@@ -70,20 +81,6 @@ public class WelcomeStartActivity extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }
+// ------------------###############################-------------- NAVBAR*END* -------------------------###############################------------------------------------------------------
 
-    public void GoHome(){
-        Intent intent = new Intent(this, WelcomeStartActivity.class);
-        startActivity(intent);
-
-    }
-    public void GoDestinations(){
-        Intent intent = new Intent(this, PickDestination.class);
-        startActivity(intent);
-
-    }
-    //Navbar hamburger icon function *start*
-    public void onClickStart(View view) {
-        Intent intent = new Intent(this, PickDestination.class);
-        startActivity(intent);
-    }
 }

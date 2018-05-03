@@ -25,6 +25,7 @@
 </android.support.constraint.ConstraintLayout>
     <!--//add this to every layout containing navigation -->
     <android.support.design.widget.NavigationView
+        android:id="@+id/view_nav"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"

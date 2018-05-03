@@ -56,7 +56,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
             + ATRIBUTELOCATIONID + " TEXT,"
             + ATRIBUTETYPE + " TEXT NOT NULL,"
             + ATRIBUTEIMG + " INT NOT NULL,"
-            + ATRIBUTEGEO + " TEXT UNIQUE);");
+            + ATRIBUTEGEO + " TEXT);");
 
 
         Log.d(TAG, "onCreate:Tables created");
@@ -66,7 +66,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewLocation(db,"Old Town", "Aread of Dubrovnik", "The old town of Dubrovnik", R.drawable.oldtown_icon);
         insertNewLocation(db,"Lapad", "Aread of Dubrovnik","Urban Part of Dubrovnik", R.drawable.lapad_icon);
         insertNewLocation(db,"Gruz", "Aread of Dubrovnik","Urban part of dubrovnik/port", R.drawable.gruz_icon);
-        insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
+        //insertNewLocation(db,"Kolocep", "Island","First Elafiti island", R.drawable.kolocep);
         insertNewLocation(db,"Cavatat", "Town","Small Town close to Dubrovnik", R.drawable.cavtat_icon);
         insertNewLocation(db,"Lokrum", "Island","Small island close to Dubrovnik", R.drawable.lokrum_icon);
 
@@ -80,6 +80,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewObject(db, "Bokar", id, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
         insertNewObject(db, "Stradun", id, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
         insertNewObject(db, "Sv Vlaho", id, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
+        insertNewObject(db, "Restoran Proljev", id, "Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia");
 
     }
 
@@ -121,14 +122,14 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         return cur;
     }
 
-    //Returns a cursor object with all turistic objects
+
     public Cursor getObjects (){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLEOBJECTS + " ;", null);
         return cursor;
     }
 
-    //Returns a cursor object with all turistic areas
+
     public Cursor getLocations (){
         SQLiteDatabase db = this.getWritableDatabase();
         String sql = "SELECT * FROM " + TABLELOCATIONS + " ;";
@@ -136,10 +137,16 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //Returns a cursor object with all turistic objects with name 'name'
-    public Cursor getObjectsOf (String name){
+
+    public Cursor getObjectsByName (String name){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT o.Name, o.Description, o.TypeOfObject, o.Image_id, o.geoData FROM Objects o JOIN Locations l ON l.ID = o.Location_id WHERE l.Name = '" + name +"';", null);
+        return cursor;
+    }
+
+    public Cursor getObjectsByType (String type){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Name, Description, TypeOfObject, Image_id, geoData FROM Objects  WHERE TypeOfObject = '" + type +"';", null);
         return cursor;
     }
 }
