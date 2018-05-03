@@ -51,7 +51,7 @@ public class MidActivity extends AppCompatActivity {
         Cursor ObjectsCursor;
         helper = new SeeDubrovnikDatabaseHellper(this);
 
-        if(SelectedItem.equals("restaurant")){
+        if(SelectedItem != null && SelectedItem.equals("restaurant")){
            ObjectsCursor = helper.getObjectsByType(SelectedItem);
         }
 
