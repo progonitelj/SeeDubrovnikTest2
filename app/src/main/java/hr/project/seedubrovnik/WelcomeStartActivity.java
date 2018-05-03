@@ -45,6 +45,7 @@ public class WelcomeStartActivity extends AppCompatActivity  {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView navigationView = findViewById(R.id.view_nav);
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -55,14 +56,13 @@ public class WelcomeStartActivity extends AppCompatActivity  {
                         mDrawerLayout.closeDrawers();
 
                         int id = item.getItemId();
-                        if (id == R.id.home) {
-                            Directions.GoHome(getBaseContext());
-                        }
+
                         if (id == R.id.destination) {
                             Directions.GoDestinations(getBaseContext());
                         }
                         if (id == R.id.restaurants) {
                             Directions.GoRestaurant(getBaseContext());
+
                         }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
