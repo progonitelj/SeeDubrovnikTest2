@@ -37,6 +37,8 @@ public class MidActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("stringName");
+        String SelectedItem = intent.getStringExtra("SelectedItem");
+
 
         SeeDubrovnikDatabaseHellper helper;
         lsObjects = new ArrayList<>();
@@ -44,9 +46,20 @@ public class MidActivity extends AppCompatActivity {
         lsMonuments.setHasFixedSize(true);
         lsMonuments.setLayoutManager(new LinearLayoutManager(this));
 
-
+        Cursor ObjectsCursor;
         helper = new SeeDubrovnikDatabaseHellper(this);
-        Cursor ObjectsCursor = helper.getObjectsOf(name);
+
+        if(SelectedItem.equals("restaurant")){
+           ObjectsCursor = helper.getObjectsByType(SelectedItem);
+        }
+
+        else {
+            ObjectsCursor = helper.getObjectsByName(name);
+        }
+
+
+
+
         while (ObjectsCursor.moveToNext()){
             TuristicObject el= new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getInt(3), ObjectsCursor.getString(4));
             lsObjects.add(el);

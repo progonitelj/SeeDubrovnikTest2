@@ -56,7 +56,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
             + ATRIBUTELOCATIONID + " TEXT,"
             + ATRIBUTETYPE + " TEXT NOT NULL,"
             + ATRIBUTEIMG + " INT NOT NULL,"
-            + ATRIBUTEGEO + " TEXT UNIQUE);");
+            + ATRIBUTEGEO + " TEXT);");
 
 
         Log.d(TAG, "onCreate:Tables created");
@@ -80,6 +80,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewObject(db, "Bokar", id, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
         insertNewObject(db, "Stradun", id, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
         insertNewObject(db, "Sv Vlaho", id, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
+        insertNewObject(db, "Restoran Proljev", id, "Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia");
 
     }
 
@@ -137,9 +138,15 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     }
 
 
-    public Cursor getObjectsOf (String name){
+    public Cursor getObjectsByName (String name){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT o.Name, o.Description, o.TypeOfObject, o.Image_id, o.geoData FROM Objects o JOIN Locations l ON l.ID = o.Location_id WHERE l.Name = '" + name +"';", null);
+        return cursor;
+    }
+
+    public Cursor getObjectsByType (String type){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Name, Description, TypeOfObject, Image_id, geoData FROM Objects  WHERE TypeOfObject = '" + type +"';", null);
         return cursor;
     }
 }

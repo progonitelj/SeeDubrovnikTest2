@@ -51,6 +51,7 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
                 Toast.makeText(myContext, "Clicked " + object.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(myContext, MidActivity.class);
                 intent.putExtra("stringName", object.getName());
+                intent.putExtra("SelectedItem", "monument");
                 myContext.startActivity(intent);
             }
         });
