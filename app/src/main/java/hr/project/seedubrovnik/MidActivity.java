@@ -26,7 +26,7 @@ public class MidActivity extends AppCompatActivity {
     private static final String TAG = "MidActivity";
 
     RecyclerView lsMonuments;
-    RecyclerViewListAdapterTur lsMonumentsAdapter;
+    RecyclerViewListAdapter lsMonumentsAdapter;
     List<TuristicObject> lsObjects;
 
     @Override
@@ -53,7 +53,7 @@ public class MidActivity extends AppCompatActivity {
 
             }
 
-        lsMonumentsAdapter = new RecyclerViewListAdapterTur(this, lsObjects);
+        lsMonumentsAdapter = new RecyclerViewListAdapter(this, lsObjects);
         lsMonuments.setAdapter(lsMonumentsAdapter);
 
         //Navbar prepare *start*

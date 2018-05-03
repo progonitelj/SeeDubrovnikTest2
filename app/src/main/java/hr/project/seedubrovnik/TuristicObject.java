@@ -1,36 +1,20 @@
 package hr.project.seedubrovnik;
 
-import android.net.Uri;
 
-import java.util.ArrayList;
-import java.util.List;
+public class TuristicObject extends PartsOfTown{
 
-public class TuristicObject {
+    private String partOfTown;
+    private String typeOfObject;
+    private String geoURI;
 
     TuristicObject(String name, String PartOfTown, String description, String typeOfObject, int image, String geoURI){
-        this.setName(name);
+        super(name, image, description);
         this.setPartOfTown(PartOfTown);
-        this.setDescription(description);
-        this.setImageURL(image);
         this.setGeoURI(geoURI);
         this.setTypeOfObject(typeOfObject);
     }
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImageURL(int image) {
-        this.image = image;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPartOfTown() {
         return partOfTown;
@@ -39,15 +23,6 @@ public class TuristicObject {
     public void setPartOfTown(String partOfTown) {
         this.partOfTown = partOfTown;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String shortDescription) {
-        this.description = shortDescription;
-    }
-
 
     public String getGeoURI() {
         return geoURI;
@@ -66,20 +41,5 @@ public class TuristicObject {
         this.typeOfObject = typeOfObject;
     }
 
-    @Override
-    public String toString() {
-        return "TuristicObject{" +
-                "name='" + name + '\'' +
-                ", partOfTown='" + partOfTown + '\'' +
-                ", shortDescription='" + description + '\'' +
-                '}';
-    }
-
-    private String name;
-    private String partOfTown;
-    private String description;
-    private String typeOfObject;
-    private int image;
-    private String geoURI;
 
 }
