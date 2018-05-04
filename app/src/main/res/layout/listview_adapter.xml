@@ -15,24 +15,15 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="15dp"
-
+        android:layout_marginBottom="1dp"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/parentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
-           <!-- <TextView
-                android:id="@+id/TextView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text = "Old Town"
-                android:textSize="25sp"
-                />-->
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -40,20 +31,38 @@
                 android:layout_height="180dp"
                 android:cropToPadding="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/bg_dubrovnik"
+                android:src="@drawable/lapad_icon"
+                android:tint="#99000000"
                 />
 
-           <!-- <TextView
+            <TextView
+                android:id="@+id/TextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textAlignment="center"
+                android:text = "Old Town"
+                android:textSize="35sp"
+                android:textColor="@color/pureWight"
+                />
+
+            <TextView
                 android:id="@+id/TextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_below="@+id/TextView1"
                 android:maxHeight="75dp"
                 android:text = "Description: "
                 android:textSize="15sp"
-                />-->
+                android:textColor="@color/pureWight"
+                />
 
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

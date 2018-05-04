@@ -40,11 +40,12 @@ public class Bottom_Activity extends AppCompatActivity {
 
         String descript = intent.getStringExtra("desc");
         TextView tvDescript = (TextView) findViewById(R.id.descript);
+        makeToastLong(descript);
         tvDescript.setText(descript);
 
         String pot = intent.getStringExtra("pot");
-        TextView tvPot = (TextView) findViewById(R.id.pot);
-        tvPot.setText(pot);
+        //TextView tvPot = (TextView) findViewById(R.id.pot);
+        //tvPot.setText(pot);
 
         String name = intent.getStringExtra("stringName");
         TextView tvName = (TextView) findViewById(R.id.textime);
