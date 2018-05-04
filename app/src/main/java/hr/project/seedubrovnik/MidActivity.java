@@ -39,7 +39,7 @@ public class MidActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("stringName");
-        String SelectedItem = intent.getStringExtra("SelectedItem");
+        String table = intent.getStringExtra("table");
 
 
         SeeDubrovnikDatabaseHellper helper;
@@ -51,46 +51,33 @@ public class MidActivity extends AppCompatActivity {
         Cursor ObjectsCursor;
         helper = new SeeDubrovnikDatabaseHellper(this);
 
-        if(SelectedItem != null && SelectedItem.equals("restaurant")){
-           ObjectsCursor = helper.getObjectsByType(SelectedItem);
-        }
-
-        else {
+        if (table != null) {
+            ObjectsCursor = helper.getObjectsByTable(table);
+        } else {
             ObjectsCursor = helper.getObjectsByName(name);
         }
 
 
-
-
-        while (ObjectsCursor.moveToNext()){
-            TuristicObject el= new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getInt(3), ObjectsCursor.getString(4));
+        while (ObjectsCursor.moveToNext()) {
+            TuristicObject el = new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getInt(3), ObjectsCursor.getString(4));
             lsObjects.add(el);
 
-            }
+        }
 
         lsMonumentsAdapter = new RecyclerViewListAdapter(this, lsObjects);
         lsMonuments.setAdapter(lsMonumentsAdapter);
 
 
-
-
-
-
     }
 
 
-
-    public void makeToastLong(String text){
+    public void makeToastLong(String text) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    public void makeToastShort(String text){
+    public void makeToastShort(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
-
-
-
-
 
 
     //----------###############################-----NAVBAR *start* -----------###############################---------------------------------
@@ -103,7 +90,7 @@ public class MidActivity extends AppCompatActivity {
     }
 
     //Navbar DRAW *start*
-    public void DrawNav(){
+    public void DrawNav() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
@@ -138,8 +125,8 @@ public class MidActivity extends AppCompatActivity {
                 });
 
 
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mToggle.onOptionsItemSelected(item)) {

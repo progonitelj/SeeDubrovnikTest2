@@ -23,8 +23,9 @@ public class Directions extends AppCompatActivity {
 
     public static void GoRestaurant(Context act) {
         Intent intent = new Intent(act, MidActivity.class);
-        intent.putExtra("stringName", "restaurant");
-        intent.putExtra("SelectedItem", "restaurant");
+
+        intent.putExtra("table", "restaurants");
+
         act.startActivity(intent);
 
     }

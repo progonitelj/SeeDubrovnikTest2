@@ -14,6 +14,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
     private static final String DBNAME = "SeeDubrovnik.db";
     private static final String TABLEOBJECTS = "objects";
+    private static final String TABLERESTAURANTS = "restaurants";
     private static final String TABLELOCATIONS = "Locations";
     private static final String ATRIBUTEID = "ID";
     private static final String ATRIBUTENAME = "Name";
@@ -57,6 +58,18 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
             + ATRIBUTETYPE + " TEXT NOT NULL,"
             + ATRIBUTEIMG + " INT NOT NULL,"
             + ATRIBUTEGEO + " TEXT);");
+        //RESTAURANT CREATE TABLE
+        db.execSQL("CREATE TABLE " + TABLERESTAURANTS + "("
+                + ATRIBUTEID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + ATRIBUTENAME + " TEXT NOT NULL UNIQUE,"
+                + ATRIBUTEDESC + " TEXT NOT NULL,"
+                + ATRIBUTELOCATIONID + " TEXT,"
+                + ATRIBUTETYPE + " TEXT NOT NULL,"
+                + ATRIBUTEIMG + " INT NOT NULL,"
+                + ATRIBUTEGEO + " TEXT);");
+
+
+
 
 
         Log.d(TAG, "onCreate:Tables created");
@@ -80,7 +93,10 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         insertNewObject(db, "Bokar", id, "One of the 5 forts in Old town of Dubrovnik.", "Fort", R.drawable.bokar_icon, "geo:0,0?q=Tvrđava Bokar, Od Puća 20, 20000, Dubrovnik, Croatia");
         insertNewObject(db, "Stradun", id, "Stradun is the main street in dubrovnik. It 350 meter long and 15 meter wide.", "Street", R.drawable.stradun_ico, "geo:0,0?q=Stradun, Croatia");
         insertNewObject(db, "Sv Vlaho", id, "This is one of the biggest and most famous churches in Dubrovnik. It is named after protector of Dubrovnik.", "Church", R.drawable.sv_vlaho_icon, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, Dubrovnik, Croatia");
-        insertNewObject(db, "Restoran Proljev", id, "Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia");
+
+        insertNewRestaurant(db, "Restoran Proljev", id, "Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "geo:0,0?q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia");
+
+
 
     }
 
@@ -116,6 +132,17 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         db.insert(TABLEOBJECTS, null, objectValues);
     }
 
+    public void insertNewRestaurant (SQLiteDatabase db, String name, int lication_id, String description, String typeOfObject, int image, String geoData){
+        ContentValues objectValues = new ContentValues();
+        objectValues.put(ATRIBUTENAME, name);
+        objectValues.put(ATRIBUTELOCATIONID, lication_id);
+        objectValues.put(ATRIBUTEDESC, description);
+        objectValues.put(ATRIBUTETYPE, typeOfObject);
+        objectValues.put(ATRIBUTEIMG, image);
+        objectValues.put(ATRIBUTEGEO, geoData);
+        db.insert(TABLERESTAURANTS, null, objectValues);
+    }
+
     //gets all location id-s where names is 'name'
     public Cursor getLocation_id(SQLiteDatabase db, String name){
         Cursor cur = db.rawQuery("SELECT " + ATRIBUTEID + " FROM " + TABLELOCATIONS + " WHERE " + ATRIBUTENAME + " = '" + name + "' ;", null);
@@ -147,6 +174,11 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     public Cursor getObjectsByType (String type){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT Name, Description, TypeOfObject, Image_id, geoData FROM Objects  WHERE TypeOfObject = '" + type +"';", null);
+        return cursor;
+    }
+    public Cursor getObjectsByTable (String table){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Name, Description, TypeOfObject, Image_id, geoData FROM '" + table +"';", null);
         return cursor;
     }
 }
