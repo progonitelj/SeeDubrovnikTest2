@@ -8,64 +8,308 @@
     android:id="@+id/drawer_layout"
     ><!--//add this to every layout containing navigation be sure to close it in the end of the document -->
 
-    <RelativeLayout
-
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/darkOrange"
-        tools:context=".WelcomeStartActivity">
+        android:layout_height="match_parent">
 
-
-        <ImageView
-            android:id="@+id/imageView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="214dp"
-            android:layout_alignParentTop="true"
-            android:contentDescription="Header image"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/bg_dubrovnik" />
+            android:layout_height="match_parent"
+            android:background="@color/pureWight"
+            tools:context=".WelcomeStartActivity">
 
-        <TextView
-            android:id="@+id/slogan"
-            android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textColor="@color/colorPrimary"
-            android:text="Welcomne to Dubrovnik!"
-            />
+            <RelativeLayout
+                android:id="@+id/topContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/darkOrange">
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="Header image"
+                    app:srcCompat="@drawable/logo" />
 
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/slogan"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:onClick="onClickStart"
-            android:text="Start your jurney"
-            />
+                <TextView
+                    android:id="@+id/slogan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Welcomne to Dubrovnik!"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="30sp" />
 
 
-        <TextView
-            android:id="@+id/opis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/startButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:textSize="20sp"
-            android:textColor="@color/pureWight"
-            android:textAlignment="center"
-            android:text="This is an app for easy and simple tours around the dubrovnik. Find all turistic atractive paces in a minute."
-            />
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/slogan"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:onClick="onClickStart"
+                    android:text="Start your jurney"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
 
-    </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/opis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/startButton"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="40dp"
+                    android:text="This is an app for easy and simple tours around the dubrovnik. Find all turistic atractive paces in a minute."
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.GridLayout
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:orientation="horizontal"
+                android:layout_below="@+id/topContent"
+                android:background="#000000"
+                app:columnCount="2"
+                app:rowCount="2"
+                >
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="100"
+                    app:layout_rowWeight="1"
+                    app:layout_columnWeight="1"
+                    android:background="#ffcc00"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_wb_sunny_black_24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="20"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sunni Areas"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:weightSum="100"
+                    app:layout_rowWeight="1"
+                    app:layout_columnWeight="1"
+                    android:background="#3377ff"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_info_outline_black_24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="20"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sunni Areas"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:weightSum="100"
+                    app:layout_rowWeight="1"
+                    app:layout_columnWeight="1"
+                    android:background="#2db300"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_local_hospital_black_24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="20"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sunni Areas"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:weightSum="100"
+                    app:layout_rowWeight="1"
+                    app:layout_columnWeight="1"
+                    android:background="#997300
+"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_restaurant_black_24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="20"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sunni Areas"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.GridLayout>
+
+            <LinearLayout
+                android:id="@+id/mapLegend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/grid"
+                android:orientation="vertical"
+                android:weightSum="100"
+                >
+
+                <ImageView
+                    android:id="@+id/mapPic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mapdbk"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="70"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="1) Lapad"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="2) Kantafig"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="3) Gruz"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="4) Old Town"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="5) Babin Kuk"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:text="7) Boninovo"
+                    />
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mapLegend"
+                android:background="#4D000000"
+                >
+
+                <TextView
+                    android:id="@+id/about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:text="About us"
+                    />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo"
+                    android:layout_below="@+id/about_us"
+
+                    />
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
     <!--//add this to every layout containing navigation -->
     <android.support.design.widget.NavigationView
         android:id="@+id/view_nav"
