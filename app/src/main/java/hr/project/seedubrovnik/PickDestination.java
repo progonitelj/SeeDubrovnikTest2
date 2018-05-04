@@ -25,8 +25,6 @@ public class PickDestination extends AppCompatActivity {
     RecyclerViewListAdapter lsViewAdapter;
     List<PartsOfTown> lsPartsOfTown;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,6 @@ public class PickDestination extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.RecyclerView1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         try {
             helper = new SeeDubrovnikDatabaseHellper(this);
@@ -59,11 +56,7 @@ public class PickDestination extends AppCompatActivity {
         lsViewAdapter = new RecyclerViewListAdapter(this, lsPartsOfTown);
         recyclerView.setAdapter(lsViewAdapter);
 
-
-
-
     }
-
 
 
     public void makeToastLong(String text){

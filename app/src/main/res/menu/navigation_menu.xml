@@ -66,14 +66,26 @@
         android:title="@string/weather"
 
         />
-        <item
-            android:id="@+id/about_us"
-            android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="@string/about_us"
 
-            />
 
 
     </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2"
+        android:title="ajmo"
+       >
+        <item
+            android:id="@+id/rate_app"
+            android:icon="@drawable/ic_star_rate_black_18dp"
+            android:title="@string/rate_app"
+
+            />
+        <item
+        android:id="@+id/about_us"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="@string/about_us"
+
+        /></group>
 
 </menu>
