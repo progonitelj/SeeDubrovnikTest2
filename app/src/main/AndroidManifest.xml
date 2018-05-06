@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hr.project.seedubrovnik">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,10 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".PickDestination" />
-        <activity
-            android:name=".DetailsActivity"
-            android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MidActivity" />
         <activity android:name=".Bottom_Activity"></activity>
     </application>

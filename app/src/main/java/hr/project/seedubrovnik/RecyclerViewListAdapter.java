@@ -41,16 +41,13 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         if (items.get(position ) instanceof TuristicObject){
             final TuristicObject object = (TuristicObject) items.get(position);
-            Toast.makeText(myContext, "Tur Obj", Toast.LENGTH_LONG).show();
             holder.title.setText(object.getName());
-            holder.desc.setText(holder.desc.getText() + object.getDesc());
+            holder.desc.setText(holder.desc.getText() + object.getShortDesc());
             holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImage()));
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "onClick: Clicked on item"+ object.getName());
-                    Toast.makeText(myContext, "Clicked " + object.getName(), Toast.LENGTH_SHORT).show();
-
                     Intent intent = new Intent(myContext, Bottom_Activity.class);
                     intent.putExtra("stringName", object.getName());
                     intent.putExtra("geo", object.getGeoURI());
@@ -63,7 +60,6 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
             });
         }
         else {
-            Toast.makeText(myContext, "Part of town", Toast.LENGTH_LONG).show();
             final PartsOfTown object =(PartsOfTown) items.get(position);
             holder.title.setText(object.getName());
             holder.desc.setText(holder.desc.getText() + object.getDesc());
@@ -72,7 +68,6 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "onClick: Clicked on item"+ object.getName());
-                    Toast.makeText(myContext, "Clicked " + object.getName(), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(myContext, MidActivity.class);
                     intent.putExtra("stringName", object.getName());

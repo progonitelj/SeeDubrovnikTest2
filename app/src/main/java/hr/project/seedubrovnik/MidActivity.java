@@ -59,7 +59,7 @@ public class MidActivity extends AppCompatActivity {
 
 
         while (ObjectsCursor.moveToNext()) {
-            TuristicObject el = new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getInt(3), ObjectsCursor.getString(4));
+            TuristicObject el = new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getString(3), ObjectsCursor.getInt(4), ObjectsCursor.getString(5));
             lsObjects.add(el);
 
         }
@@ -75,9 +75,7 @@ public class MidActivity extends AppCompatActivity {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    public void makeToastShort(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
+    public void makeToastShort(String text) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show(); }
 
 
     //----------###############################-----NAVBAR *start* -----------###############################---------------------------------

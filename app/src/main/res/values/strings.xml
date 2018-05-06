@@ -19,4 +19,12 @@
     <string name="weather">Weather</string>
     <string name="about_us">About us</string>
     <string name="rate_app">Rate our app</string>
+
+    <string-array name="spinnerTypes">
+        <item>Monuments</item>
+        <item>Food</item>
+        <item>Drinks</item>
+        <item>Emergencies</item>
+        <item>Transport</item>
+    </string-array>
 </resources>

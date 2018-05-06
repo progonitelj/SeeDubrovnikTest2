@@ -1,6 +1,9 @@
 package hr.project.seedubrovnik;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -10,58 +13,76 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Bottom_Activity extends AppCompatActivity {
 
-    Uri geoUri;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
+        name = intent.getStringExtra("stringName");
+        TextView tvName = (TextView) findViewById(R.id.textime);
+        tvName.setText(name);
 
-        String geo = intent.getStringExtra("geo");
-        geoUri = Uri.parse(geo);
-        Button bLocation = (Button) findViewById(R.id.location);
+        final String geo = intent.getStringExtra("geo");
+        ImageButton bLocation = (ImageButton) findViewById(R.id.location);
         bLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeToastShort("Button get location clicked!");
-                Intent intent = new Intent(Intent.ACTION_VIEW, geoUri);
-                intent.setPackage("com.google.android.apps.maps");
-                startActivity(intent);
+                if (isNetworkAvailable()){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + geo + "&mode=w"));
+                    intent.setPackage("com.google.android.apps.maps");
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + geo + "?q=" + name ));
+                    intent.setPackage("com.google.android.apps.maps");
+                    startActivity(intent);
+                }
+
             }
         });
 
         String descript = intent.getStringExtra("desc");
         TextView tvDescript = (TextView) findViewById(R.id.descript);
-        makeToastLong(descript);
         tvDescript.setText(descript);
 
-        String pot = intent.getStringExtra("pot");
+        final String pot = intent.getStringExtra("pot");
         //TextView tvPot = (TextView) findViewById(R.id.pot);
         //tvPot.setText(pot);
-
-        String name = intent.getStringExtra("stringName");
-        TextView tvName = (TextView) findViewById(R.id.textime);
-        tvName.setText(name);
 
 
         int image = getIntent().getExtras().getInt("img");
         ImageView ivImage = (ImageView) findViewById(R.id.endimage);
         ivImage.setImageResource(image);
 
-
-
         DrawNav();
+
+        ImageButton back = (ImageButton) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Bottom_Activity.this, MidActivity.class);
+                intent.putExtra("stringName", pot);
+                startActivity(intent);
+            }
+        });
     }
 
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 
     public void makeToastLong(String text){

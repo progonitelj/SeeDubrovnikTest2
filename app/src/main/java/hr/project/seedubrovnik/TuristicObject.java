@@ -7,11 +7,14 @@ public class TuristicObject extends PartsOfTown{
     private String typeOfObject;
     private String geoURI;
 
-    TuristicObject(String name, String PartOfTown, String description, String typeOfObject, int image, String geoURI){
+    private String shortDesc;
+
+    TuristicObject(String name, String PartOfTown, String shortDesc, String description, String typeOfObject, int image, String geoURI){
         super(name, image, description);
         this.setPartOfTown(PartOfTown);
         this.setGeoURI(geoURI);
         this.setTypeOfObject(typeOfObject);
+        this.setShortDesc(shortDesc);
     }
 
 
@@ -39,6 +42,14 @@ public class TuristicObject extends PartsOfTown{
 
     public void setTypeOfObject(String typeOfObject) {
         this.typeOfObject = typeOfObject;
+    }
+
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
     }
 
 

@@ -12,70 +12,75 @@
 
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".Bottom_Activity">
 
 
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/location"
+            android:layout_above="@+id/links"
             >
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/pureWight"
                 >
                 <ImageView
                     android:id="@+id/endimage"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:scaleType="fitXY"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/bg_dubrovnik"
                     android:layout_marginBottom="10dp"
                     />
 
-                <TextView
-                    android:id="@+id/textime"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/name_locaion"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@id/endimage"
-                    android:text="Hello World!!!"
-                    android:layout_weight="50"
-                    android:textSize="30sp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="5dp"
-                    />
-
-
-<!---
-                <TextView
-                    android:id="@+id/pot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textime"
-                    android:layout_alignParentLeft="true"
-                    android:text="Hello World!!!"
-                    android:layout_weight="50"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:weightSum="100"
+                    >
+                    <TextView
+                        android:id="@+id/textime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Hello World!!!"
+                        android:layout_weight="45"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        />
 
-                    />
+                    <ImageButton
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="55"
+                        android:background="@color/pureWight"
+                        android:src="@drawable/map_icon"
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center"
+                        />
 
-                    -->
 
 
+                </LinearLayout>
 
 
                 <TextView
                     android:id="@+id/descript"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textime"
+                    android:layout_below="@id/name_locaion"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="20dp"
                     android:textSize="16sp"
@@ -85,17 +90,53 @@
 
         </ScrollView>
 
-
-        <Button
-            android:id="@+id/location"
+        <LinearLayout
+            android:id="@+id/links"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/lightBlue"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:text="Get Location Now"
-            />
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:background="@color/pureWight"
+            >
+
+
+            <ImageButton
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/back_icon"
+                android:scaleType="fitCenter"
+                android:layout_weight="33.3"
+                android:layout_margin="5dp"
+                android:background="@color/pureWight"
+                android:layout_gravity="center"
+                />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/advisor"
+                android:scaleType="fitCenter"
+                android:layout_weight="33.3"
+                android:layout_margin="5dp"
+                android:background="@color/pureWight"
+                android:layout_gravity="center"
+                />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/web_icon"
+                android:scaleType="fitCenter"
+                android:layout_weight="33.3"
+                android:background="@color/pureWight"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                />
+
+
+        </LinearLayout>
 
 
 

@@ -24,6 +24,7 @@ public class PickDestination extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerViewListAdapter lsViewAdapter;
     List<PartsOfTown> lsPartsOfTown;
+    SeeDubrovnikDatabaseHellper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class PickDestination extends AppCompatActivity {
         setContentView(R.layout.activity_pick_destination);
         DrawNav();
         Log.d(TAG, "onCreate: Started!! ");
-        SeeDubrovnikDatabaseHellper helper;
         lsPartsOfTown = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.RecyclerView1);
         recyclerView.setHasFixedSize(true);
@@ -40,7 +40,6 @@ public class PickDestination extends AppCompatActivity {
         try {
             helper = new SeeDubrovnikDatabaseHellper(this);
             Log.d(TAG, "onCreate: database connected!");
-            makeToastShort("Connected to database!");
             Cursor locationsCursor = helper.getLocations();
             Log.d(TAG, "onCreate:got locations!!");
             while (locationsCursor.moveToNext()){
@@ -75,6 +74,17 @@ public class PickDestination extends AppCompatActivity {
     public void onClickStart(View view) {
         Intent intent = new Intent(this, PickDestination.class);
         startActivity(intent);
+    }
+
+
+    public void onStop(){
+        super.onStop();
+        helper.close();
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        helper.close();
     }
 
     //Navbar DRAW *start*
