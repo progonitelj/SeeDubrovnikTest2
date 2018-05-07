@@ -11,19 +11,21 @@ public class Directions {
 
     public static void GoHome(Context act) {
         Intent intent = new Intent(act, WelcomeStartActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         act.startActivity(intent);
 
     }
 
     public static void GoDestinations(Context act) {
         Intent intent = new Intent(act, PickDestination.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         act.startActivity(intent);
 
     }
 
     public static void GoRestaurant(Context act) {
         Intent intent = new Intent(act, MidActivity.class);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("table", "restaurants");
 
         act.startActivity(intent);
