@@ -1,7 +1,5 @@
 package hr.project.seedubrovnik;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,15 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,36 +25,34 @@ import java.util.Set;
 
 
 public class WelcomeStartActivity extends AppCompatActivity {
-    /*private Set<Integer> red = new HashSet<>(Arrays.asList(23, 43, 172));
-    private Set<Integer> green = new HashSet<>(Arrays.asList(12, 186, 40 ));
-    private Set<Integer> blue = new HashSet<>(Arrays.asList(20, 4, 173));
-    */
     private ImageView map;
     private Bitmap bitmap;
+    RecyclerView recyclerView;
+    RecyclerViewListAdapter2 adapter;
+    List<PartsOfTown> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_start);
         DrawNav();
-        addOnTuchListtener();
+        list = new ArrayList<>();
+        list.add(new PartsOfTown("Food", R.drawable.hrana,"Get relavant areas"));
+        list.add(new PartsOfTown("Beaches", R.drawable.plaza,"Get relavant areas"));
+        list.add(new PartsOfTown("Transport", R.drawable.autobus,"Get relavant areas"));
+        list.add(new PartsOfTown("Monuments", R.drawable.tample,"Get relavant areas"));
+        list.add(new PartsOfTown("Drinks", R.drawable.map_icon,"Get relavant areas"));
+        list.add(new PartsOfTown("Emergencies", R.drawable.map_icon,"Get relavant areas"));
 
-    }
+        adapter = new RecyclerViewListAdapter2(this, list);
+        GridLayoutManager menager = new GridLayoutManager(this, 2);
+        recyclerView = findViewById(R.id.RecyclerView3);
+        recyclerView.setLayoutManager(menager);
+        recyclerView.setAdapter(adapter);
 
-    public void makeToastLong(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-    }
-
-    public void makeToastShort(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
-
-
-    public void addOnTuchListtener() {
-        map = (ImageView) findViewById(R.id.mapPic);
+        map = (ImageView) findViewById(R.id.map);
         map.setDrawingCacheEnabled(true);
         map.buildDrawingCache(true);
-        // LISTENER FOR MAPIMAGE
         map.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -94,6 +89,16 @@ public class WelcomeStartActivity extends AppCompatActivity {
         });
 
     }
+
+
+    public void makeToastLong(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    }
+
+    public void makeToastShort(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
 
     //----------###############################-----NAVBAR *start* -----------###############################---------------------------------
     public DrawerLayout mDrawerLayout;
@@ -153,14 +158,4 @@ public class WelcomeStartActivity extends AppCompatActivity {
 
 }
 
-class TouchableImageView extends android.support.v7.widget.AppCompatImageView{
-    public TouchableImageView(Context context) {
-        super(context);
-    }
 
-    @Override
-    public boolean performClick() {
-        // do what you want
-        return true;
-    }
-}

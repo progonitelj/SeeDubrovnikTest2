@@ -176,7 +176,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
 
 
     public Cursor getLocations (){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM " + TABLELOCATIONS + " ;";
         Cursor cursor = db.rawQuery(sql, null);
         return cursor;

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:padding="5dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     >
 
 
     <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:card="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
+        card:cardElevation="10dp"
+        card:contentPadding="10dp"
         >
 
         <RelativeLayout
@@ -28,36 +29,22 @@
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="150dp"
                 android:cropToPadding="true"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:src="@drawable/lapad_icon"
                 android:tint="#8C000000"
                 />
 
             <TextView
                 android:id="@+id/TextView1"
+                android:layout_below="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:textAlignment="center"
                 android:text = "Old Town"
                 android:textSize="35sp"
-                android:textColor="@color/pureWight"
-                />
-
-            <TextView
-                android:id="@+id/TextView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_below="@+id/TextView1"
-                android:maxHeight="75dp"
-                android:text = "Description: "
-                android:textSize="15sp"
-                android:textColor="@color/pureWight"
+                android:textColor="#000000"
                 />
 
 
@@ -68,4 +55,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>
