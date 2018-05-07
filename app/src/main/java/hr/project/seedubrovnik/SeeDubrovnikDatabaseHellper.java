@@ -68,6 +68,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
                 + ATRIBUTEID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ATRIBUTENAME + " TEXT NOT NULL UNIQUE,"
                 + ATRIBUTEDESC + " TEXT NOT NULL,"
+                + ATRIBUTESHORTDESC + " TEXT NOT NULL,"
                 + ATRIBUTELOCATIONID + " TEXT,"
                 + ATRIBUTETYPE + " TEXT NOT NULL,"
                 + ATRIBUTEIMG + " INT NOT NULL,"
@@ -111,7 +112,11 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
                 "\n" +
                 "St Blaise has been honoured as the patron saint of Dubrovnik from the 10th century. According to the chroniclers of Dubrovnik, St Blaise saved the people of Dubrovnik in the 10th century when the Venetians anchored their ships in Gruž and in front of the Island of Lokrum. The people of Dubrovnik believed the Venetians assurances that they would leave for Levant after they supplied themselves with food and drink. The visitors used the opportunity to see the sights and observed the weaknesses in the City defence. However, St Blaise revealed their intentions to the parish priest Stojko and thus saved the City from the night attack. The priest described him as an old grey-haired man with a long beard, a bishops cap and a stick in his hand. Precisely the way his statues on the city walls and towers look like.", "Church", R.drawable.sv_vlaho_icon, "42.640683,18.11034");
 
-        insertNewRestaurant(db, "Restoran Proljev", id, "Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "google.navigation:q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia&mode=w");
+        insertNewRestaurant(db, "Restoran Letva", id,"dasdasdasd" ,"Best restorant in dzbrovnik", "restaurant", R.drawable.stradun_ico, "google.navigation:q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia&mode=w");
+        insertNewRestaurant(db, "Restoran bronson", id,"dasdasdasd" ,"Best restorant in dzbrovnik", "restaurant", R.drawable.bokar_icon, "google.navigation:q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia&mode=w");
+        insertNewRestaurant(db, "Restoran halson", id,"dasdasdasd" ,"Best restorant in dzbrovnik", "restaurant", R.drawable.buza_icon, "google.navigation:q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia&mode=w");
+        insertNewRestaurant(db, "Restoran Mali Rus", id,"dasdasdasd" ,"Best restorant in dzbrovnik", "restaurant", R.drawable.buza_icon, "google.navigation:q=Crkva svetog Vlaha,Luža ul. 2, 20000, dask, Croatia&mode=w");
+
 
 
 
@@ -150,10 +155,11 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
         db.insert(TABLEOBJECTS, null, objectValues);
     }
 
-    public void insertNewRestaurant (SQLiteDatabase db, String name, int lication_id, String description, String typeOfObject, int image, String geoData){
+    public void insertNewRestaurant (SQLiteDatabase db, String name, int lication_id,String shortDesc, String description, String typeOfObject, int image, String geoData){
         ContentValues objectValues = new ContentValues();
         objectValues.put(ATRIBUTENAME, name);
         objectValues.put(ATRIBUTELOCATIONID, lication_id);
+        objectValues.put(ATRIBUTESHORTDESC, shortDesc);
         objectValues.put(ATRIBUTEDESC, description);
         objectValues.put(ATRIBUTETYPE, typeOfObject);
         objectValues.put(ATRIBUTEIMG, image);
@@ -196,7 +202,7 @@ class SeeDubrovnikDatabaseHellper  extends SQLiteOpenHelper {
     }
     public Cursor getObjectsByTable (String table){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT Name, Description, TypeOfObject, Image_id, geoData FROM '" + table +"';", null);
+        Cursor cursor = db.rawQuery("SELECT Name, Short_desc, Description, TypeOfObject, Image_id, geoData FROM '" + table +"';", null);
         return cursor;
     }
 }
