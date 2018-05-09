@@ -1,41 +1,16 @@
 package hr.project.seedubrovnik;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 
 public class WelcomeStartActivity  extends AppCompatActivity
@@ -60,7 +35,7 @@ FragmentPagerAdapter fragmentPagerAdapter;
                 new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setmViewPager(1);
+                setmViewPager(2);
             }
         });
 
@@ -76,7 +51,7 @@ FragmentPagerAdapter fragmentPagerAdapter;
     private void setupViewPager(ViewPager viewPager){
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(),"HomeFragment");
-        adapter.addFragment(new BlankFragment(),"BlankFragment");
+        adapter.addFragment(new CategoryFragment(),"CategoryFragment");
         viewPager.setAdapter(adapter);
     }
     public void setmViewPager(int fragmentNumber ){

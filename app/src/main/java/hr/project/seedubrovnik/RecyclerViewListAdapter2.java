@@ -39,9 +39,9 @@ public class RecyclerViewListAdapter2 extends RecyclerView.Adapter<RecyclerViewL
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-            final PartsOfTown object = (PartsOfTown) items.get(position);
+            final Category object = (Category) items.get(position);
             holder.title.setText(object.getName());
-            holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImage()));
+            holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImg()));
 
 
 
