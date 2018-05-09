@@ -1,4 +1,4 @@
-package hr.project.seedubrovnik;
+/*package hr.project.seedubrovnik;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -133,3 +133,4 @@ public class PickDestination extends AppCompatActivity {
 // ------------------###############################-------------- NAVBAR*END* -------------------------###############################------------------------------------------------------
 
 }
+*/
