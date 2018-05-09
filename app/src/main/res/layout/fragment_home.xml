@@ -11,249 +11,103 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/pureWight"
             tools:context=".WelcomeStartActivity">
 
-            <RelativeLayout
-                android:id="@+id/topContent"
+            <ImageView
+                android:id="@+id/topImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/oldtown_icon"
+                android:scaleType="fitXY"
+                android:tint="#8C000000"
+                />
+
+            <TextView
+                android:id="@+id/qt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@color/pureWight">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:contentDescription="Header image"
-                    android:background="@color/darkOrange"
-                    app:srcCompat="@drawable/logo" />
-
-                <TextView
-                    android:id="@+id/slogan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Welcomne to Dubrovnik!"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp" />
+                android:textSize="20sp"
+                android:layout_alignBottom="@+id/topImg"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/pureWight"
+                android:text="Welcome Traveler"/>
 
 
-                <Button
-                    android:id="@+id/startButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/slogan"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:onClick="onClickStart"
-                    android:text="Start your jurney"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
-
-
-                <TextView
-                    android:id="@+id/opis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/startButton"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginTop="40dp"
-                    android:text="This is an app for easy and simple tours around the dubrovnik. Find all turistic atractive paces in a minute."
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-            <android.support.v7.widget.GridLayout
-                android:id="@+id/grid"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:orientation="horizontal"
-                android:layout_below="@+id/topContent"
-                android:background="@color/lightBlue"
-                app:columnCount="2"
-                app:rowCount="2"
-                >
-                <LinearLayout
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:weightSum="100"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    >
+                android:textSize="20sp"
+                android:layout_below="@+id/topImg"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000000"
+                android:layout_margin="30dp"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_wb_sunny_black_24dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="20"
-                        android:tint="#99000000"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sunni Areas"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:weightSum="100"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    >
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_info_outline_black_24dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="20"
-                        android:tint="#99000000"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sunni Areas"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:weightSum="100"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    android:background="#2db300"
-                    >
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_local_hospital_black_24dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="20"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sunni Areas"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:weightSum="100"
-                    app:layout_rowWeight="1"
-                    app:layout_columnWeight="1"
-                    android:background="#997300
-"
-                    >
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_restaurant_black_24dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="20"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sunni Areas"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        />
-
-                </LinearLayout>
-
-
-            </android.support.v7.widget.GridLayout>
-
-            <LinearLayout
-                android:id="@+id/mapLegend"
+            <view class="android.support.v7.widget.RecyclerView"
+                android:layout_margin="10dp"
+                android:id="@+id/RecyclerView3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/grid"
-                android:orientation="vertical"
-                android:weightSum="100"
+                android:layout_height="250dp"
+                android:layout_below="@+id/welcome"
                 >
 
-                <ImageView
-                    android:id="@+id/mapPic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mapdbk"
-                    android:scaleType="fitXY"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="70"
-                    />
+            </view>
 
+            <ImageView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_below="@+id/RecyclerView3"
+                android:scaleType="fitXY"
+                android:src="@drawable/mapblack"
+                />
 
-
-            </LinearLayout>
-
-
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/mapLegend"
-                android:background="@color/darkOrange"
-                >
+                android:src="@drawable/logo"
+                android:layout_below="@id/map"
+                android:scaleType="fitCenter"
+                />
 
-                <TextView
-                    android:id="@+id/about_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="30sp"
-                    android:text="About us"
-                    />
+            <TextView
+                android:id="@+id/about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/about_us"
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/logo"
-                    android:layout_below="@+id/about_us"
+                />
 
-                    />
-
-
-
-            </RelativeLayout>
-
-
+            <TextView
+                android:id="@+id/about_us_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_us"
+                android:textAlignment="center"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                />
 
         </RelativeLayout>
 
     </ScrollView>
+
 
 
     <!--//add this to every layout containing navigation -->
