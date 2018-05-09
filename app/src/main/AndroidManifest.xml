@@ -14,12 +14,13 @@
         <activity android:name=".WelcomeStartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".PickDestination" />
         <activity android:name=".MidActivity" />
-        <activity android:name=".Bottom_Activity" />
+        <activity android:name=".Bottom_Activity"></activity>
     </application>
 
 </manifest>

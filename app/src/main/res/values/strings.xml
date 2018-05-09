@@ -19,6 +19,11 @@
     <string name="weather">Weather</string>
     <string name="about_us">About us</string>
     <string name="rate_app">Rate our app</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 
     <string-array name="spinnerTypes">
         <item>Monuments</item>

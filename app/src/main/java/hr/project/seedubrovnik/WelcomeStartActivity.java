@@ -1,21 +1,35 @@
 package hr.project.seedubrovnik;
 
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,138 +38,111 @@ import java.util.List;
 import java.util.Set;
 
 
-public class WelcomeStartActivity extends AppCompatActivity {
-    private ImageView map;
-    private Bitmap bitmap;
-    RecyclerView recyclerView;
-    RecyclerViewListAdapter2 adapter;
-    List<PartsOfTown> list;
+public class WelcomeStartActivity  extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+private ViewPager mViewPager;
+FragmentPagerAdapter fragmentPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome_start);
-        DrawNav();
-        list = new ArrayList<>();
-        list.add(new PartsOfTown("Food", R.drawable.hrana,"Get relavant areas"));
-        list.add(new PartsOfTown("Beaches", R.drawable.plaza,"Get relavant areas"));
-        list.add(new PartsOfTown("Transport", R.drawable.autobus,"Get relavant areas"));
-        list.add(new PartsOfTown("Monuments", R.drawable.tample,"Get relavant areas"));
-        list.add(new PartsOfTown("Drinks", R.drawable.map_icon,"Get relavant areas"));
-        list.add(new PartsOfTown("Emergencies", R.drawable.map_icon,"Get relavant areas"));
+        setContentView(R.layout.activity_main);
+        
 
-        adapter = new RecyclerViewListAdapter2(this, list);
-        GridLayoutManager menager = new GridLayoutManager(this, 2);
-        recyclerView = findViewById(R.id.RecyclerView3);
-        recyclerView.setLayoutManager(menager);
-        recyclerView.setAdapter(adapter);
-
-        map = (ImageView) findViewById(R.id.map);
-        map.setDrawingCacheEnabled(true);
-        map.buildDrawingCache(true);
-        map.setOnTouchListener(new View.OnTouchListener() {
+        fragmentPagerAdapter  = new FragmentPagerAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.fragmentContainerr);
+        
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setupViewPager( mViewPager);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getAction() == android.view.MotionEvent.ACTION_UP){
-                    bitmap = map.getDrawingCache();
-                    int pixel = bitmap.getPixel((int) event.getX(), (int) event.getY());
-
-                    Integer r = Color.red(pixel);
-                    Integer g = Color.green(pixel);
-                    Integer b = Color.blue(pixel);
-                    TextView abus = (TextView) findViewById(R.id.about_us);
-                    abus.setBackgroundColor(Color.rgb(r, g, b));
-
-                    Set<Integer> pixColor = new HashSet<>(Arrays.asList(r, g, b));
-                    for (Integer c : pixColor) {
-                        System.out.println(c);
-                    }
-
-                    if (r.compareTo(g) > 0 && r.compareTo(b) > 0) {
-                        makeToastShort("Crvena");
-                        Intent intent = new Intent(WelcomeStartActivity.this, MidActivity.class);
-                        intent.putExtra("stringName", "Old Town");
-                        WelcomeStartActivity.this.startActivity(intent);
-                    }
-
-                }
-
-
-
-                return true;
-
+            public void onClick(View view) {
+                setmViewPager(1);
             }
         });
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+    private void setupViewPager(ViewPager viewPager){
+        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(),"HomeFragment");
+        adapter.addFragment(new BlankFragment(),"BlankFragment");
+        viewPager.setAdapter(adapter);
+    }
+    public void setmViewPager(int fragmentNumber ){
+        mViewPager.setCurrentItem(fragmentNumber);
+
     }
 
 
-    public void makeToastLong(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
-    public void makeToastShort(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
-
-
-    //----------###############################-----NAVBAR *start* -----------###############################---------------------------------
-    public DrawerLayout mDrawerLayout;
-    public ActionBarDrawerToggle mToggle;
-
-    public void onClickStart(View view) {
-        Intent intent = new Intent(this, PickDestination.class);
-        startActivity(intent);
-    }
-
-    //Navbar DRAW *start*
-    public void DrawNav() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        NavigationView navigationView = findViewById(R.id.view_nav);
-
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
-                        // set item as selected to persist highlight
-                        item.setChecked(true);
-                        // close drawer when item is tapped
-                        mDrawerLayout.closeDrawers();
-
-                        int id = item.getItemId();
-
-                        if (id == R.id.destination) {
-                            Directions.GoDestinations(getBaseContext());
-                        }
-                        if (id == R.id.restaurants) {
-                            Directions.GoRestaurant(getBaseContext());
-
-                        }
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
-                        return true;
-                    }
-                });
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mToggle.onOptionsItemSelected(item)) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
-// ------------------###############################-------------- NAVBAR*END* -------------------------###############################------------------------------------------------------
 
-}
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+
+
+
+
+
+    }}
 
