@@ -42,25 +42,7 @@ public class RecyclerViewListAdapter2 extends RecyclerView.Adapter<RecyclerViewL
             final PartsOfTown object = (PartsOfTown) items.get(position);
             holder.title.setText(object.getName());
             holder.image.setImageDrawable(myContext.getResources().getDrawable(object.getImage()));
-            holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (object.getName().equals("Food")){
-                        Intent intent = new Intent(myContext, MidActivity.class);
-                        intent.putExtra("table", "restaurants");
-                        myContext.startActivity(intent);
-                    }
-                    else if(object.getName().equals("Monuments")){
-                        Intent intent = new Intent(myContext, MidActivity.class);
-                        intent.putExtra("table", "objects");
-                        myContext.startActivity(intent);
-                    }
-                    else {
-                        Intent intent = new Intent(myContext, PickDestination.class);
-                        myContext.startActivity(intent);
-                    }
-                }
-            });
+
 
 
 

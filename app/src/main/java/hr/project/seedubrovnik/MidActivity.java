@@ -1,4 +1,4 @@
-package hr.project.seedubrovnik;
+/*package hr.project.seedubrovnik;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -51,14 +51,14 @@ public class MidActivity extends AppCompatActivity {
         Cursor ObjectsCursor;
         helper = new SeeDubrovnikDatabaseHellper(this);
 
-        if (table != null) {
+        /*if (table != null) {
             ObjectsCursor = helper.getObjectsByTable(table);
         } else {
             ObjectsCursor = helper.getObjectsByName(name);
         }
+*/
 
-
-        while (ObjectsCursor.moveToNext()) {
+       /* while (ObjectsCursor.moveToNext()) {
             TuristicObject el = new TuristicObject(ObjectsCursor.getString(0), name, ObjectsCursor.getString(1), ObjectsCursor.getString(2), ObjectsCursor.getString(3), ObjectsCursor.getInt(4), ObjectsCursor.getString(5));
             lsObjects.add(el);
 
@@ -137,3 +137,4 @@ public class MidActivity extends AppCompatActivity {
 
 
 
+*/

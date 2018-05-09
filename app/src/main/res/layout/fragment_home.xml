@@ -8,11 +8,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/fragmentHome">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -24,42 +25,40 @@
                 android:id="@+id/topImg"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/oldtown_icon"
                 android:scaleType="fitXY"
-                android:tint="#8C000000"
-                />
+                android:src="@drawable/oldtown_icon"
+                android:tint="#8C000000" />
 
             <TextView
                 android:id="@+id/qt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_alignBottom="@+id/topImg"
                 android:layout_marginBottom="10dp"
+                android:text="Welcome Traveler"
                 android:textColor="@color/pureWight"
-                android:text="Welcome Traveler"/>
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_below="@+id/topImg"
-                android:textAlignment="center"
-                android:layout_marginBottom="10dp"
-                android:textColor="#000000"
                 android:layout_margin="30dp"
+                android:layout_marginBottom="10dp"
                 android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                />
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-            <view class="android.support.v7.widget.RecyclerView"
-                android:layout_margin="10dp"
+            <view
                 android:id="@+id/RecyclerView3"
+                class="android.support.v7.widget.RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:layout_below="@+id/welcome"
-                >
+                android:layout_margin="10dp">
 
             </view>
 
@@ -69,28 +68,26 @@
                 android:layout_height="220dp"
                 android:layout_below="@+id/RecyclerView3"
                 android:scaleType="fitXY"
-                android:src="@drawable/mapblack"
-                />
+                android:src="@drawable/mapblack" />
 
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
                 android:layout_below="@id/map"
                 android:scaleType="fitCenter"
-                />
+                android:src="@drawable/logo" />
 
             <TextView
                 android:id="@+id/about_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/logo"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textColor="#BEBEBE"
                 android:layout_marginBottom="10dp"
                 android:text="@string/about_us"
+                android:textAlignment="center"
+                android:textColor="#BEBEBE"
+                android:textSize="30sp"
 
                 />
 
@@ -99,11 +96,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/about_us"
-                android:textAlignment="center"
                 android:layout_margin="15dp"
-                android:textSize="20sp"
                 android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                />
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 

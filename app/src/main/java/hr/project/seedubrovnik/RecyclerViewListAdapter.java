@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewListAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewListAdapter";
@@ -101,3 +101,4 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
         }
     }
 }
+*/

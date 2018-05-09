@@ -1,4 +1,4 @@
-package hr.project.seedubrovnik;
+/*package hr.project.seedubrovnik;
 
 import android.content.Context;
 import android.content.Intent;
@@ -66,15 +66,7 @@ public class Bottom_Activity extends AppCompatActivity {
 
         DrawNav();
 
-        ImageButton back = (ImageButton) findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Bottom_Activity.this, MidActivity.class);
-                intent.putExtra("stringName", pot);
-                startActivity(intent);
-            }
-        });
+
     }
 
 
@@ -149,3 +141,4 @@ public class Bottom_Activity extends AppCompatActivity {
     }
 // ------------------###############################-------------- NAVBAR*END* -------------------------###############################------------------------------------------------------
 }
+*/
