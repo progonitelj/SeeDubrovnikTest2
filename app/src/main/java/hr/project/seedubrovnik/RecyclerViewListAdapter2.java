@@ -55,6 +55,10 @@ public class RecyclerViewListAdapter2 extends RecyclerView.Adapter<RecyclerViewL
                         intent.putExtra("table", "objects");
                         myContext.startActivity(intent);
                     }
+                    else {
+                        Intent intent = new Intent(myContext, PickDestination.class);
+                        myContext.startActivity(intent);
+                    }
                 }
             });
 

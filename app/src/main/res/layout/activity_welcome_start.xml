@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/topImg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:src="@drawable/oldtown_icon"
                 android:scaleType="fitXY"
                 android:tint="#8C000000"
@@ -57,7 +57,7 @@
                 android:layout_margin="10dp"
                 android:id="@+id/RecyclerView3"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="280dp"
                 android:layout_below="@+id/welcome"
                 >
 
@@ -88,6 +88,7 @@
                 android:layout_below="@+id/logo"
                 android:textAlignment="center"
                 android:textSize="30sp"
+                android:textColor="#BEBEBE"
                 android:layout_marginBottom="10dp"
                 android:text="@string/about_us"
 

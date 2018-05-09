@@ -27,8 +27,6 @@
             android:entries="@array/spinnerTypes"
             >
 
-
-
         </Spinner>
 
 

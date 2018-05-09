@@ -7,7 +7,7 @@
     android:id="@+id/drawer_layout"
     ><!--//add this to every layout containing navigation be sure to close it in the end of the document -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,13 +16,24 @@
     tools:context=".MidActivity">
 
 
+    <Spinner
+        android:id="@+id/selectType"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:entries="@array/spinnerTypes"
+        >
+
+    </Spinner>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/monuments"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectType">
     </android.support.v7.widget.RecyclerView>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
     <!--//add this to every layout containing navigation -->
     <android.support.design.widget.NavigationView
         android:id="@+id/view_nav"

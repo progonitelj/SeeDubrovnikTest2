@@ -24,16 +24,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+
             >
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="110dp"
                 android:cropToPadding="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/lapad_icon"
-                android:tint="#8C000000"
                 />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:text = "Old Town"
-                android:textSize="35sp"
+                android:textSize="15sp"
                 android:textColor="#000000"
                 />
 
