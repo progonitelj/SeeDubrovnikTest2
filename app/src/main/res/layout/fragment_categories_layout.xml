@@ -1,55 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--//add this to every layout containing navigation -->
-<android.support.v4.widget.DrawerLayout android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    >
+    android:layout_height="match_parent">
 
-    <!--//add this to every layout containing navigation and close it in the end-->
-
-    <RelativeLayout
-
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <view
+        class="android.support.v7.widget.RecyclerView"
+        android:id="@+id/RecyclerView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".PickDestination">
+        android:layout_height="wrap_content">
 
+    </view>
 
-        <Spinner
-            android:id="@+id/selectType"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:entries="@array/spinnerTypes"
-            >
-
-        </Spinner>
-
-
-        <view class="android.support.v7.widget.RecyclerView"
-            android:id="@+id/RecyclerView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/selectType">
-
-        </view>
-
-
-
-    </RelativeLayout>
-    <!--//add this to every layout containing navigation -->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/view_nav"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_layout"
-        app:menu="@menu/navigation_menu">
-        <!--//add this to every layout containing navigation -->
-
-        <!--//BE SURE TO CLOSE IT DOWN BELOW -->
-    </android.support.design.widget.NavigationView></android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

@@ -52,21 +52,12 @@
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
-            <view
-                android:id="@+id/RecyclerView3"
-                class="android.support.v7.widget.RecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:layout_below="@+id/welcome"
-                android:layout_margin="10dp">
-
-            </view>
 
             <ImageView
                 android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:layout_below="@+id/RecyclerView3"
+                android:layout_below="@+id/welcome"
                 android:scaleType="fitXY"
                 android:src="@drawable/mapblack" />
 
@@ -105,12 +96,5 @@
 
     </ScrollView>
 
-
-
-    <!--//add this to every layout containing navigation -->
-
-    <!--//add this to every layout containing navigation -->
-
-    <!--//close it -->
 
 </FrameLayout>

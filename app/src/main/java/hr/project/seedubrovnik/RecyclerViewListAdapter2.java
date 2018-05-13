@@ -1,18 +1,14 @@
 package hr.project.seedubrovnik;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +28,7 @@ public class RecyclerViewListAdapter2 extends RecyclerView.Adapter<RecyclerViewL
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.welcome_adapter, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_adapter, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

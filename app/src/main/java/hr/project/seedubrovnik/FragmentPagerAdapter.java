@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
-    private  final List<Fragment> mFragmentList=new ArrayList<>();
-    private  final List<String> mFragmentTitleList=new ArrayList<>();
+
+    private  final List<Fragment> mFragmentList = new ArrayList<>();
+    private  final List<String> mFragmentTitleList = new ArrayList<>();
+
     public FragmentPagerAdapter(FragmentManager fm) {
-
-
-
         super(fm);
     }
+
    public void addFragment(Fragment fragment,String title){
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
@@ -30,8 +30,6 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
     }
     @Override
     public Fragment getItem(int position) {
-
-
         return mFragmentList.get(position);
     }
 
